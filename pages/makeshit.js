@@ -1,30 +1,32 @@
-import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
-import Layout from '../components/layouts/article'
-import Section from '../components/section'
-import { GridItem } from '../components/grid-item'
+import React from 'react';
+import { Navbar } from '../components/navbar.js';
+import { Footer } from '../components/footer.js';
+import { Section } from '../components/section.js';
+import { GridItem } from '../components/grid-item.js';
 
-const Posts = () => (
-  <Layout title="Posts">
-    <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
-        Popular Posts
-      </Heading>
+const projects = [
+    // Add your projects here
+    // { title: 'Project 1', description: 'Description 1', thumbnail: '/path/to/thumbnail1.png' },
+    // { title: 'Project 2', description: 'Description 2', thumbnail: '/path/to/thumbnail2.png' },
+    {title : 'This Website', description: 'This website was made using React.js and Next.js. It is hosted on Vercel.', thumbnail: '/images/this-website.png'},
+];
 
-      <Section delay={0.1}>
-        <SimpleGrid columns={[1, 2, 2]} gap={6}>
-          <GridItem
-            title="How to build a portfolio website"
-            href="https://www.youtube.com/watch?v=bSMZgXzC9AA"
-          />
-          <GridItem
-            title="How to take notes in Markdown efficiently with Inkdrop"
-            href="https://www.youtube.com/watch?v=-qBavwqc_mY"
-          />
-        </SimpleGrid>
-      </Section>
-    </Container>
-  </Layout>
-)
+const Makeshit = () => {
+    return (
+        <div>
+            <Navbar />
+            <main>
+                <Section title="My Portfolio">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
+                        {projects.map((project, index) => (
+                            <GridItem key={index} title={project.title} description={project.description} thumbnail={project.thumbnail} />
+                        ))}
+                    </div>
+                </Section>
+            </main>
+            <Footer />
+        </div>
+    );
+};
 
-export default Posts
-export { getServerSideProps } from '../components/chakra'
+export default Makeshit;

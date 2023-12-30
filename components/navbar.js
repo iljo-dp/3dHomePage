@@ -80,6 +80,7 @@ const Navbar = props => {
           <LinkItem href="/posts" path={path}>
             Posts
           </LinkItem>
+	  <LinkItem href="/makeshit" path={path}> makeshit </LinkItem>
           <LinkItem
             target="_blank"
             href="https://github.com/iljo-dp/"
